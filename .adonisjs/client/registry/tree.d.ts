@@ -16,4 +16,10 @@ export interface ApiDefinition {
       show: typeof routes['profile.profile.show']
     }
   }
+  rooms: {
+    rooms: {
+      create: typeof routes['rooms.rooms.create']
+      join: typeof routes['rooms.rooms.join']
+    }
+  }
 }

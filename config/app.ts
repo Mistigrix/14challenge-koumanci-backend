@@ -18,6 +18,8 @@ export const appKey = env.get('APP_KEY')
  */
 export const appUrl = env.get('APP_URL')
 
+export const roomCodeLength = env.get('ROOM_CODE_LENGTH', 6)
+
 /**
  * The configuration settings used by the HTTP server
  */

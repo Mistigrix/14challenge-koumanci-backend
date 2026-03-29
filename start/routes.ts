@@ -33,5 +33,14 @@ router
       .prefix('account')
       .as('profile')
       .use(middleware.auth())
+
+    router
+      .group(() => {
+        router.post('/create', [controllers.Rooms, 'create'])
+        router.post('/join', [controllers.Rooms, 'join'])
+      })
+      .prefix('rooms')
+      .as('rooms')
+      .use(middleware.auth())
   })
   .prefix('/api/v1')

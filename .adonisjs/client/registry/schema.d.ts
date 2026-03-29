@@ -55,4 +55,28 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/profile_controller').default['show']>>>
     }
   }
+  'rooms.rooms.create': {
+    methods: ["POST"]
+    pattern: '/api/v1/rooms/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/rooms_controller').default['create']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/rooms_controller').default['create']>>>
+    }
+  }
+  'rooms.rooms.join': {
+    methods: ["POST"]
+    pattern: '/api/v1/rooms/join'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/rooms_controller').default['join']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/rooms_controller').default['join']>>>
+    }
+  }
 }

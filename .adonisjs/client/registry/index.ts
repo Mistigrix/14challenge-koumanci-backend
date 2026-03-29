@@ -30,6 +30,18 @@ const routes = {
     tokens: [{"old":"/api/v1/account/profile","type":0,"val":"api","end":""},{"old":"/api/v1/account/profile","type":0,"val":"v1","end":""},{"old":"/api/v1/account/profile","type":0,"val":"account","end":""},{"old":"/api/v1/account/profile","type":0,"val":"profile","end":""}],
     types: placeholder as Registry['profile.profile.show']['types'],
   },
+  'rooms.rooms.create': {
+    methods: ["POST"],
+    pattern: '/api/v1/rooms/create',
+    tokens: [{"old":"/api/v1/rooms/create","type":0,"val":"api","end":""},{"old":"/api/v1/rooms/create","type":0,"val":"v1","end":""},{"old":"/api/v1/rooms/create","type":0,"val":"rooms","end":""},{"old":"/api/v1/rooms/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['rooms.rooms.create']['types'],
+  },
+  'rooms.rooms.join': {
+    methods: ["POST"],
+    pattern: '/api/v1/rooms/join',
+    tokens: [{"old":"/api/v1/rooms/join","type":0,"val":"api","end":""},{"old":"/api/v1/rooms/join","type":0,"val":"v1","end":""},{"old":"/api/v1/rooms/join","type":0,"val":"rooms","end":""},{"old":"/api/v1/rooms/join","type":0,"val":"join","end":""}],
+    types: placeholder as Registry['rooms.rooms.join']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
