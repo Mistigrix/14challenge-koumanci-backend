@@ -4,6 +4,9 @@ type ParamValue = string | number | bigint | boolean
 
 export type ScannedRoutes = {
   ALL: {
+    'event_stream': { paramsTuple?: []; params?: {} }
+    'subscribe': { paramsTuple?: []; params?: {} }
+    'unsubscribe': { paramsTuple?: []; params?: {} }
     'auth.new_account.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
@@ -26,6 +29,7 @@ export type ScannedRoutes = {
     'rtcs.resume_consumer': { paramsTuple: [ParamValue]; params: {'code': ParamValue} }
   }
   GET: {
+    'event_stream': { paramsTuple?: []; params?: {} }
     'profile.profile.show': { paramsTuple?: []; params?: {} }
     'rooms.index': { paramsTuple?: []; params?: {} }
     'rooms.show': { paramsTuple: [ParamValue]; params: {'code': ParamValue} }
@@ -34,6 +38,7 @@ export type ScannedRoutes = {
     'rtcs.producers': { paramsTuple: [ParamValue]; params: {'code': ParamValue} }
   }
   HEAD: {
+    'event_stream': { paramsTuple?: []; params?: {} }
     'profile.profile.show': { paramsTuple?: []; params?: {} }
     'rooms.index': { paramsTuple?: []; params?: {} }
     'rooms.show': { paramsTuple: [ParamValue]; params: {'code': ParamValue} }
@@ -42,6 +47,8 @@ export type ScannedRoutes = {
     'rtcs.producers': { paramsTuple: [ParamValue]; params: {'code': ParamValue} }
   }
   POST: {
+    'subscribe': { paramsTuple?: []; params?: {} }
+    'unsubscribe': { paramsTuple?: []; params?: {} }
     'auth.new_account.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.destroy': { paramsTuple?: []; params?: {} }

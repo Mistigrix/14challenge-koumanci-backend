@@ -1,0 +1,519 @@
+{
+  "info": {
+    "name": "Koumanci Backend API",
+    "description": "Collection Postman pour l'API Koumanci (backend AdonisJS).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "version": "1.0.0"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.koumanci.chalenge14.com",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "roomCode",
+      "value": "ROOM_CODE_HERE",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "USER_ID_HERE",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Général",
+      "item": [
+        {
+          "name": "GET /",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": ["/"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "POST /api/v1/auth/register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"password\": \"password123\",\n  \"passwordConfirmation\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/auth/login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"jane@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/auth/logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Compte",
+      "item": [
+        {
+          "name": "GET /api/v1/account/profile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/account/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "account", "profile"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rooms",
+      "item": [
+        {
+          "name": "GET /api/v1/rooms",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Soirée Quiz\",\n  \"description\": \"Room de discussion pour les participants.\",\n  \"isPrivate\": false,\n  \"maxParticipants\": 20\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/v1/rooms/:code",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}"]
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/v1/rooms/:code",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/join",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"roomsecret\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/join",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "join"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/leave",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "leave"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/v1/rooms/:code/participants",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/participants",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "participants"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/participants",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 2,\n  \"role\": \"participant\",\n  \"canPublishVideo\": true,\n  \"canPublishAudio\": true,\n  \"canShareScreen\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/participants",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "participants"]
+            }
+          }
+        },
+        {
+          "name": "DELETE /api/v1/rooms/:code/participants/:userId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/participants/{{userId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "participants", "{{userId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "RTC",
+      "item": [
+        {
+          "name": "GET /api/v1/rooms/:code/rtc/capabilities",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/capabilities",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "capabilities"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/rtc/transport",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/transport",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "transport"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/rtc/transport/connect",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transportId\": \"TRANSPORT_ID_HERE\",\n  \"dtlsParameters\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/transport/connect",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "transport", "connect"]
+            }
+          }
+        },
+        {
+          "name": "GET /api/v1/rooms/:code/rtc/producers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/producers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "producers"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/rtc/produce",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transportId\": \"TRANSPORT_ID_HERE\",\n  \"kind\": \"audio\",\n  \"rtpParameters\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/produce",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "produce"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/rtc/consume",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transportId\": \"TRANSPORT_ID_HERE\",\n  \"producerId\": \"PRODUCER_ID_HERE\",\n  \"rtpCapabilities\": {}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/consume",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "consume"]
+            }
+          }
+        },
+        {
+          "name": "POST /api/v1/rooms/:code/rtc/consume/resume",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"consumerId\": \"CONSUMER_ID_HERE\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/rooms/{{roomCode}}/rtc/consume/resume",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "rooms", "{{roomCode}}", "rtc", "consume", "resume"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
